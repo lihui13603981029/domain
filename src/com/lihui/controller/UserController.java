@@ -25,7 +25,7 @@ public class UserController {
 	
 	@RequestMapping(value="/userInfo" ,method = RequestMethod.POST)
 	@ResponseBody
-	public String sendUserInfo( @RequestParam(value="dataJson") @RequestBody List<UserInfo> userInfos) {
+	public String sendUserInfo(@RequestBody List<UserInfo> userInfos) {
 		try {
 			System.out.println("³É¹¦");
 			for(UserInfo userInfo:userInfos) {
