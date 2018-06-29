@@ -3,6 +3,9 @@ package com.lihui.controller;
 import java.util.Date;
 import java.util.List;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
 import org.apache.catalina.connector.Request;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -15,6 +18,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import com.lihui.bean.UserInfo;
 import com.lihui.beanvo.UserInfoVo;
 import com.lihui.service.api.IUser;
+import com.lihui.tools.Result;
 
 @Controller
 @RequestMapping(value="/user")
@@ -27,41 +31,27 @@ public class UserController {
 	@ResponseBody
 	public String sendUserInfo(@RequestBody List<UserInfo> userInfos) {
 		try {
-			System.out.println("成功");
 			for(UserInfo userInfo:userInfos) {
+				System.out.println(userInfo.getName());
 				userInfo.setAlias(userInfo.getName());
 				userInfo.setCollegeId(1);
 				userInfo.setMajorId(1);
 				userInfo.setCreateTime(new Date());
 				boolean result = userService.addUserInfo(userInfo);
-				if(result) {
-					return "success";
-				}
 			}
 			
 		} catch (Exception e) {
+			System.out.println(e);
 
 		}
-		return "error";
+		return "success";
 	}
 	
 	@RequestMapping(value="userMeg" , method= RequestMethod.GET)
 	@ResponseBody
-	public UserInfoVo getUserInfo(@RequestParam(value="id" )String id) throws Exception {
-		UserInfoVo userInfoVo = new UserInfoVo();
+	public Result getUserInfo(@RequestParam(value="id" )String id) throws Exception {
 		
 		try {
-			if (id == "" || id == null) {
-				userInfoVo.setStatus("4001");
-				userInfoVo.setResultMsg("id 不能为空");
-				return userInfoVo;
-			}
-		 UserInfo userInfo =	userService.findUserInfoBy(id);
-		 
-		 userInfoVo.setUserInfo(userInfo);
-		 userInfoVo.setStatus("200");
-		 userInfoVo.setResultMsg("success");
-		 return userInfoVo;
 		 
 		} catch (Exception e) {
 			// TODO: handle exception
@@ -71,4 +61,8 @@ public class UserController {
 		return null;
 	}
 
+	@RequestMapping(value="image", method=RequestMethod.POST)
+	public void updataUserImage() throws Exception{
+		
+	}
 }

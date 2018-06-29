@@ -6,43 +6,44 @@ import com.lihui.bean.UserInfo;
 
 public class UserInfoVo {
 	
-	private UserInfo userInfo;
-    
-    
-	private String status;
+	/**
+	 * —ß∫≈
+	 */
+	private String userNum;
+	/**
+	 *	√‹¬Î
+	 */
+	private String passWord;
+
+	/**
+	 * –’√˚ 
+	 */
+	private String name;
+
+	public String getUserNum() {
+		return userNum;
+	}
+
+	public void setUserNum(String userNum) {
+		this.userNum = userNum;
+	}
+
+	public String getPassWord() {
+		return passWord;
+	}
+
+	public void setPassWord(String passWord) {
+		this.passWord = passWord;
+	}
+
+	public String getName() {
+		return name;
+	}
+
+	public void setName(String name) {
+		this.name = name;
+	}
 	
-	private String resultMsg;
-
-
-	public UserInfo getUserInfo() {
-		return userInfo;
-	}
-
-
-	public void setUserInfo(UserInfo userInfo) {
-		this.userInfo = userInfo;
-	}
-
-
-	public String getStatus() {
-		return status;
-	}
-
-
-
-	public void setStatus(String status) {
-		this.status = status;
-	}
-
-
-	public String getResultMsg() {
-		return resultMsg;
-	}
-
-
-	public void setResultMsg(String resultMsg) {
-		this.resultMsg = resultMsg;
-	}
 	
 	
     
